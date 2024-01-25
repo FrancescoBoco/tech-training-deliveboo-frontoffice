@@ -1,9 +1,9 @@
 
 
 <script>
-import Header from './components/Header.vue';
-import Main from './components/Main.vue';
-import Footer from './components/Footer.vue';
+import HeaderComponent from './components/HeaderComponent.vue';
+import MainComponent from './components/MainComponent.vue';
+import FooterComponent from './components/FooterComponent.vue';
 import axios  from 'axios';
 import {store} from './store'
 
@@ -11,27 +11,28 @@ import {store} from './store'
 
 export default {
   name: "App",
-  components:{
-    Header,
-    Main,
-    Footer,
-  },
   data(){
     return{
         store,
     }
   },
+  components:{
+    HeaderComponent,
+    MainComponent,
+    FooterComponent,
+  },
+  
   methods: {
 
   }}
 </script>
 
 <template>
-  <Header />
-
-  <Main/>
- 
-  <Footer/>
+  <HeaderComponent />
+  
+    <!-- <MainComponent/> -->
+    <router-view></router-view>
+  <FooterComponent/>
 </template>
 
 <style lang="scss" >

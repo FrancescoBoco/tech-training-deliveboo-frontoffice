@@ -1,17 +1,11 @@
 <script>
-import {store} from '../store'
-import axios  from 'axios';
-
-
-
 export default {
   data(){
     return{
-      store,
     }
   },
   methods: {
-   
+
   },
   props: {
   }
@@ -19,10 +13,12 @@ export default {
 </script>
 
 <template>
- 
-        
+<h1>
+  footer
+</h1>
 </template>
 
 
 <style lang="scss" scoped>
+
 </style>
