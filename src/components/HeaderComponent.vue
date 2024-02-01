@@ -23,12 +23,6 @@ export default {
 <router-link :to="{ name: 'search' }">
     <h6 ><span>go to search </span></h6>
 </router-link>
-<router-link :to="{ name: 'show' }">
-    <h6 ><span>go to show </span></h6>
-</router-link>
- 
-
-
 </template>
 
 

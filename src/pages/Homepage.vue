@@ -4,8 +4,7 @@ import { store } from "../store";
 
 export default {
     components: {
-
-    },
+},
     data() {
         return {
             title: 'Home',
@@ -41,6 +40,7 @@ export default {
                 <p class="card-text">Tipologie:
                     <span class="badge text-bg-primary" v-for="typology in restaurant.typologies">{{ typology.name }}</span>
                 </p>
+                <router-link :to="{name: 'show', params: {id: restaurant.id}}">Menu</router-link>
             </div>
         </div>
     </div>
