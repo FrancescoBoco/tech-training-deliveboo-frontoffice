@@ -27,23 +27,39 @@ export default {
 </script>
 
 <template>
-    <section>
-        <h1 class="mt-5 mb-3">Homepage </h1>
+    <section class="d-flex justify-content-center">
+        <h1 class="mt-5 mb-3">Ristoranti</h1>
     </section>
     <div class="container">
-        <div class="card mb-3" v-for="restaurant in restaurants" style="width: 18rem;">
+        <div class="row">
+            <div class="col-4 d-flex justify-content-center" v-for="restaurant in restaurants">
+        <div class="card mb-3"  style="width: 18rem;">
             <img class="card-img-top" :src="restaurant.photo" :alt="restaurant.name">
             <div class="card-body">
                 <h5 class="card-title">{{ restaurant.name }}</h5>
                 <p class="card-text">Indirizzo: {{ restaurant.address }}</p>
-                <p class="card-text">PIVA: {{ restaurant.piva }}</p>
                 <p class="card-text">Tipologie:
-                    <span class="badge text-bg-primary" v-for="typology in restaurant.typologies">{{ typology.name }}</span>
+                    <span class="badge text-bg-primary me-1" v-for="typology in restaurant.typologies">{{ typology.name }}</span>
                 </p>
-                <router-link :to="{name: 'show', params: {id: restaurant.id}}">Menu</router-link>
+                <div class="d-flex justify-content-center">
+                <router-link class="btn btn-info" :to="{name: 'show', params: {id: restaurant.id}}">Mostra menu</router-link>
+                </div>
             </div>
         </div>
     </div>
+    </div>
+    </div>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.card-body {
+    background-color: #D95D30;
+    color:white;
+}
+
+.btn-info {
+    background-color: #D94141;
+    border-color: #D94141;
+    color:white;
+}
+</style>
