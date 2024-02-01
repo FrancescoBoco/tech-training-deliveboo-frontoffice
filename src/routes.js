@@ -6,19 +6,19 @@ import Showpage from "./pages/Showpage.vue";
 const routes = [
     // homepage
     {
-        path: '/tech-training-deliveboo-fontoffice/',
+        path: '/',
         name: 'home',
         component: Homepage,
     },
-    // searchPage
+    // searchPage ?? prob in home andrà
     {
-        path: '/tech-training-deliveboo-fontoffice/search',
+        path: '/search',
         name: 'search',
         component: Searchpage,
     },
     //showPage
     {
-        path: '/show/:id',
+        path: '/restaurant/:id',
         name: 'show',
         component: Showpage,
     },
