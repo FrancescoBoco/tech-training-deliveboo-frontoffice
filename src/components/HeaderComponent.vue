@@ -15,22 +15,41 @@ export default {
 }
 </script>
 
-<template>
-    <h2>Header</h2>
-<router-link :to="{ name: 'home' }">
-    <h6 ><span>home </span></h6>
-</router-link>
-<router-link :to="{ name: 'search' }">
-    <h6 ><span>go to search </span></h6>
-</router-link>
-<router-link :to="{ name: 'show' }">
-    <h6 ><span>go to show </span></h6>
-</router-link>
- 
+<template >
+    <div class="navbar-style">
+        <div class="container">
+            <nav class="p-2 d-flex align-items-center justify-content-between">
+                <router-link :to="{ name: 'home' }"> <img class="logo" src="/images/deliveboo.jpg" alt="deliveboo logo">
 
-
+                </router-link>
+                <router-link :to="{ name: 'home' }">
+                    <h6><span>Home</span></h6>
+                </router-link>
+                <router-link :to="{ name: 'search' }">
+                    <h6><span>Ristoratore</span></h6>
+                </router-link>
+            </nav>
+        </div>
+    </div>
 </template>
 
 
 <style lang="scss" scoped>
+.logo {
+    width: 100px;
+    border-radius: 20px;
+}
+
+.navbar-style {
+    background-color: rgba(0, 0, 0, 0.937);
+
+    a {
+        color: #D95D30;
+        text-decoration: none;
+
+        span {
+            font-size: 30px;
+        }
+    }
+}
 </style>
