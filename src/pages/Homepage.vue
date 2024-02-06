@@ -96,19 +96,19 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.wrap {
-    margin-top: 116px;
-    min-height: calc(100vh - 172px); //calcolo del margin top e del footer
-}
-
 .card-body {
     background-color: #D95D30;
     color: white;
 }
 
 .btn-info {
-    background-color: #D94141;
+    background-color: rgba(217, 65, 65, 0);
     border-color: #D94141;
     color: white;
+    transition: all .5s;
+
+    &:hover {
+        background-color: rgba(217, 65, 65, 1);
+    }
 }
 </style>
