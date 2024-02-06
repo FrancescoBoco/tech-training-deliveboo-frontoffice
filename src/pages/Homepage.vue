@@ -63,7 +63,7 @@ export default {
                     aria-label="Basic checkbox toggle button group">
                     <input @click="search(typology.name)" type="checkbox" class="btn-check" :id="typology.name"
                         autocomplete="off">
-                    <label class="btn btn-outline-success" :for="typology.name">{{ typology.name }}</label>
+                    <label class="btn btn-outline-danger" :for="typology.name">{{ typology.name }}</label>
 
                 </div>
             </div>
