@@ -2,7 +2,8 @@
 
 // Import all of Bootstrap's CSS
 @import "bootstrap/scss/bootstrap";
-main{
+
+main {
     // per attingere alla variabile bisogna richiamarla,
     // con as *, è come se la richiamassimo sepre 
 
@@ -11,4 +12,10 @@ main{
 
 body {
     background-color: #6d661f2e;
+}
+
+.main-gradient {
+    background: -webkit-linear-gradient(325deg, #ec8232, #d03448);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
