@@ -26,9 +26,9 @@ export default {
                 <router-link :to="{ name: 'home' }">
                     <h6><span class="main-gradient">Home</span></h6>
                 </router-link>
-                <router-link :to="{ name: 'search' }">
+                <a href="http://localhost:8000">
                     <h6><span class="main-gradient">Ristoratore</span></h6>
-                </router-link>
+                </a>
                 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></button>
 
             </nav>

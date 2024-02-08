@@ -10,11 +10,11 @@
     <div v-else class="row">
         <div v-for="dish in store.cart" class="col-12">
             <div class="product d-flex align-items-center gap-3">
-                <img class="img-fluid preview" src="http://127.0.0.1:8000/storage/uploads/O7N8MUkrr8Oc3Nqg3r1xGhDCNm6y57vakUSKNlfK.png" alt="">
+                <img class="img-fluid preview" :src="dish.photo" alt="">
                 <div class="info">
                 <p>Nome: {{ dish.name }}</p>
                 <p>Qt: {{ dish.qty }}</p>
-                <p>Prezzo: {{ dish.price*dish.qty }}&euro;</p>
+                <p>Prezzo: {{ (dish.price*dish.qty).toFixed(2) }}&euro;</p>
             </div>
             
                 
@@ -43,7 +43,7 @@ import { store } from "../store";
                 const totalPrice = store.cart.reduce((accumulator, dish) => {
                   return accumulator+dish.price*dish.qty
                 }, initialPrice)
-                return totalPrice
+                return totalPrice.toFixed(2)
             }
         }
         
