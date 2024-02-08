@@ -53,25 +53,22 @@ export default {
 
 
         <div class="container pt-3">
-            <div class="glass-form mb-3 row">
-
-
+            <div class="glass-form-dark mb-3 row">
                 <section class="d-flex justify-content-center">
-                    <h1 class="mb-3">Ristoranti</h1>
+                    <h1 class="mb-3 main-gradient">Ristoranti</h1>
                 </section>
-                <h3 class="text-center">Filtro per categorie</h3>
-
+                <h3 class="text-center main-gradient">Filtro per categorie</h3>
                 <div class="d-flex justify-content-center m-3">
-                    <div v-for="typology in typologies" class="btn-group me-1" role="group"
+                    <div v-for="typology in typologies" :key="typology.name" class="custom-checkbox-group me-1" role="group"
                         aria-label="Basic checkbox toggle button group">
                         <input @click="search(typology.name)" type="checkbox" class="btn-check" :id="typology.name"
                             autocomplete="off">
-                        <label class="btn btn-outline-danger" :for="typology.name">{{ typology.name }}</label>
-
+                        <label :for="typology.name" class="custom-checkbox-label"
+                            :class="{ 'active': typologiesSearch.includes(typology.name) }">{{ typology.name }}</label>
                     </div>
                 </div>
             </div>
-            <div class="glass-form row mb-3" v-if="restaurants.length > 0">
+            <div class="glass-form-dark row mb-3" v-if="restaurants.length > 0">
                 <div class="col-4 d-flex justify-content-center" v-for="restaurant in restaurants">
                     <div class="card mb-3" style="width: 18rem;">
                         <img class="card-img-top" :src="restaurant.photo" :alt="restaurant.name">
@@ -83,7 +80,7 @@ export default {
                                     typology.name }}</span>
                             </p>
                             <div class="d-flex justify-content-center">
-                                <router-link class="btn btn-info"
+                                <router-link class="btn btn-outline-danger"
                                     :to="{ name: 'show', params: { id: restaurant.id } }">Mostra
                                     menu</router-link>
                             </div>
@@ -101,6 +98,8 @@ export default {
 
 
 <style lang="scss" scoped>
+@use "../assets/scss/partials/variables.scss" as *;
+
 .wrap {
     background-image: url(../../public/images/background-1.png);
     background-repeat: no-repeat;
@@ -113,35 +112,30 @@ export default {
     color: white;
 }
 
-.btn-info {
-    background-color: rgba(217, 65, 65, 0);
-    border-color: #D94141;
-    color: white;
-    transition: all .5s;
-
-    &:hover {
-        background-color: rgba(217, 65, 65, 1);
-    }
+.custom-checkbox-group {
+    display: inline-block;
 }
 
-.margin-h1 {
-    padding-top: 1rem;
+.custom-checkbox-group input[type="checkbox"] {
+    display: block;
 }
 
-.btn-outline-danger {
-    --bs-btn-color: green;
-    --bs-btn-border-color: #dc3545;
-    --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #dc3545;
-    --bs-btn-hover-border-color: #dc3545;
-    --bs-btn-focus-shadow-rgb: 220, 53, 69;
-    --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #dc3545;
-    --bs-btn-active-border-color: #dc3545;
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #dc3545;
-    --bs-btn-disabled-bg: transparent;
-    --bs-btn-disabled-border-color: #dc3545;
-    --bs-gradient: none;
+.custom-checkbox-label {
+    display: inline-block;
+    padding: 0.5rem;
+    color: #ec8232;
+    background-color: transparent;
+    border: 1px solid;
+
+    border-radius: 15px;
+    margin: 0 5px;
+    cursor: pointer;
+
+    transition: all .25s;
+}
+
+.custom-checkbox-label.active {
+    color: #fff;
+    background-image: linear-gradient(325deg, #ec8232, #d03448);
 }
 </style>
