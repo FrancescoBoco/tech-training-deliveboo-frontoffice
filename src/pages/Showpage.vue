@@ -8,6 +8,7 @@ export default {
             title: 'Showpage',
             restaurant: [],
             restaurantId: null,
+            selectedRestaurantImage: null
         }
     },
     methods: {
@@ -15,6 +16,7 @@ export default {
             axios.get('http://127.0.0.1:8000/api/restaurant/' + this.restaurantId)
                 .then((response) => {
                     this.restaurant = response.data;
+                    this.selectedRestaurantImage = response.data.photo;
                 })
         },
     },
@@ -28,12 +30,14 @@ export default {
 </script>
 
 <template>
-    <div class="wrap">
+    <div class="wrap"
+        :style="{ backgroundImage: `url('${selectedRestaurantImage}')`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }">
+
 
 
         <section class="d-flex justify-content-center">
 
-            <h1 class="mt-5 mb-3">{{ restaurant.name }}</h1>
+            <h1 class="mt-5 mb-3 main main-gradient">{{ restaurant.name }}</h1>
         </section>
         <div class="container">
             <div class="row">

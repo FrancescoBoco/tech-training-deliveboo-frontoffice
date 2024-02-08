@@ -52,22 +52,26 @@ export default {
     <div class="wrap">
 
 
-        <section class="d-flex justify-content-center">
-            <h1 class="mt-5 mb-3">Ristoranti</h1>
-        </section>
-        <div class="container">
-            <h3 class="text-center">Filtro per categorie</h3>
+        <div class="container pt-3">
+            <div class="glass-form mb-3 row">
 
-            <div class="d-flex justify-content-center m-3">
-                <div v-for="typology in typologies" class="btn-group me-1" role="group"
-                    aria-label="Basic checkbox toggle button group">
-                    <input @click="search(typology.name)" type="checkbox" class="btn-check" :id="typology.name"
-                        autocomplete="off">
-                    <label class="btn btn-outline-danger" :for="typology.name">{{ typology.name }}</label>
 
+                <section class="d-flex justify-content-center">
+                    <h1 class="mb-3">Ristoranti</h1>
+                </section>
+                <h3 class="text-center">Filtro per categorie</h3>
+
+                <div class="d-flex justify-content-center m-3">
+                    <div v-for="typology in typologies" class="btn-group me-1" role="group"
+                        aria-label="Basic checkbox toggle button group">
+                        <input @click="search(typology.name)" type="checkbox" class="btn-check" :id="typology.name"
+                            autocomplete="off">
+                        <label class="btn btn-outline-danger" :for="typology.name">{{ typology.name }}</label>
+
+                    </div>
                 </div>
             </div>
-            <div v-if="restaurants.length > 0" class="row">
+            <div class="glass-form row mb-3" v-if="restaurants.length > 0">
                 <div class="col-4 d-flex justify-content-center" v-for="restaurant in restaurants">
                     <div class="card mb-3" style="width: 18rem;">
                         <img class="card-img-top" :src="restaurant.photo" :alt="restaurant.name">
@@ -95,7 +99,15 @@ export default {
     </div>
 </template>
 
+
 <style lang="scss" scoped>
+.wrap {
+    background-image: url(../../public/images/background-1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 .card-body {
     background-color: #D95D30;
     color: white;
@@ -110,5 +122,26 @@ export default {
     &:hover {
         background-color: rgba(217, 65, 65, 1);
     }
+}
+
+.margin-h1 {
+    padding-top: 1rem;
+}
+
+.btn-outline-danger {
+    --bs-btn-color: green;
+    --bs-btn-border-color: #dc3545;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #dc3545;
+    --bs-btn-hover-border-color: #dc3545;
+    --bs-btn-focus-shadow-rgb: 220, 53, 69;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #dc3545;
+    --bs-btn-active-border-color: #dc3545;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #dc3545;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #dc3545;
+    --bs-gradient: none;
 }
 </style>
