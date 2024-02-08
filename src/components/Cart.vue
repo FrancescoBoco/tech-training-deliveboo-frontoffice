@@ -23,6 +23,8 @@
         <div class="extra-info mt-3">
                 <p class="fw-bold">Prezzo totale: {{ totalPrice }}&euro;</p>
             </div>
+            <router-link class="btn btn-info"
+                                    :to="{ name: 'payment'}">Acquista</router-link>
     </div>
   </div>
 </div>
@@ -40,7 +42,7 @@ import { store } from "../store";
         computed: {
             totalPrice() {
                 const initialPrice = 0;
-                const totalPrice = store.cart.reduce((accumulator, dish) => {
+            const totalPrice = store.cart.products.reduce((accumulator, dish) => {
                   return accumulator+dish.price*dish.qty
                 }, initialPrice)
                 return totalPrice.toFixed(2)
