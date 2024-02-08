@@ -19,6 +19,7 @@ export default {
     <div class="navbar-style fixed-top">
         <div class="container">
             <nav class="p-2 d-flex align-items-center justify-content-between shadow">
+                
                 <router-link :to="{ name: 'home' }"> <img class="logo" src="/images/deliveboo.jpg" alt="deliveboo logo">
 
                 </router-link>
@@ -28,6 +29,8 @@ export default {
                 <router-link :to="{ name: 'search' }">
                     <h6><span class="main-gradient">Ristoratore</span></h6>
                 </router-link>
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></button>
+
             </nav>
         </div>
     </div>

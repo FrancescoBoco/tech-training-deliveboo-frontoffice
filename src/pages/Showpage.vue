@@ -1,5 +1,7 @@
 <script>
 import axios from "axios";
+import { store } from "../store";
+
 export default {
     components: {
     },
@@ -8,7 +10,8 @@ export default {
             title: 'Showpage',
             restaurant: [],
             restaurantId: null,
-            selectedRestaurantImage: null
+            selectedRestaurantImage: null,
+            store
         }
     },
     methods: {
@@ -17,8 +20,29 @@ export default {
                 .then((response) => {
                     this.restaurant = response.data;
                     this.selectedRestaurantImage = response.data.photo;
+                    this.restaurant.dish.map((dish) => {
+                    dish.qty = 1})
                 })
+                
+                
         },
+        addToCart(dish) {
+            let alreadyAdded = false
+
+            store.cart.forEach((currentDish) => {
+
+                if (dish.id == currentDish.id) {
+                    currentDish.qty = currentDish.qty + dish.qty
+                    alreadyAdded = true
+                }
+
+            })
+
+            if (!alreadyAdded) {
+            store.cart.push({...dish})
+            }
+
+        }
     },
     mounted() {
         this.fetchData();
@@ -51,6 +75,14 @@ export default {
                             <p class="card-text">Prezzo:
                                 <span class="badge text-bg-primary">{{ dish.price }} &euro;</span>
                             </p>
+                            <div class="input-group input-group-sm mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">Quantità:</span>
+                                <input  v-model="dish.qty" type="number" class="form-control" aria-label="Sizing example input"
+                                    aria-describedby="inputGroup-sizing-sm">
+                                <button @click="addToCart(dish)" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" class="btn btn-primary"><i class="fa-solid fa-cart-plus"></i></button>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -58,6 +90,10 @@ export default {
         </div>
     </div>
 </template>
+
+
+
+  
 
 <style lang="scss" scoped>
 .card-body {

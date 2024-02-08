@@ -4,6 +4,7 @@
 import HeaderComponent from './components/HeaderComponent.vue';
 import MainComponent from './components/MainComponent.vue';
 import FooterComponent from './components/FooterComponent.vue';
+import Cart from './components/Cart.vue';
 import axios  from 'axios';
 import {store} from './store'
 
@@ -20,6 +21,8 @@ export default {
     HeaderComponent,
     MainComponent,
     FooterComponent,
+    Cart,
+    
   },
   
   methods: {
@@ -33,6 +36,8 @@ export default {
     <!-- <MainComponent/> -->
     <router-view></router-view>
   <FooterComponent/>
+  <Cart/>
+
 </template>
 
 <style lang="scss" >
