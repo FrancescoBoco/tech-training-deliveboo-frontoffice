@@ -62,7 +62,7 @@ export default {
 
         <section class="d-flex justify-content-center">
 
-            <h1 class="mt-5 mb-3 main main-gradient glass-form">{{ restaurant.name }}</h1>
+            <h1 class="mt-5 mb-3 main main-gradient glass-form display-5 fw-bold">{{ restaurant.name }}</h1>
         </section>
         <div class="container">
             <div class="row">

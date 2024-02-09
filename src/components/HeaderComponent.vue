@@ -41,7 +41,7 @@ export default {
 <style lang="scss" scoped>
 .logo {
     width: 70px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .navbar-style {
