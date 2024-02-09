@@ -2,6 +2,7 @@ import {reactive} from 'vue'
 
 export const store = reactive({
     loading: true,
-    cart: []
+    cart: [],
+    totalPrice: 0
    
 })

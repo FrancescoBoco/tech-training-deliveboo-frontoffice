@@ -8,7 +8,7 @@
                 </div>
                 <div class="mb-3 col-6">
                     <label for="exampleFormControlTextarea1" class="form-label">Cognome</label>
-                    <input type="text"  v-model="user.surname" class="form-control" required>
+                    <input type="text" v-model="user.surname" class="form-control" required>
                 </div>
                 <div class="mb-3 col-6">
                     <label for="exampleFormControlInput1" class="form-label">Indirizzo</label>
@@ -18,16 +18,24 @@
                     <label for="exampleFormControlTextarea1" class="form-label">Telefono</label>
                     <input type="text" v-model="user.phone" class="form-control" required>
                 </div>
-                
+                <p class="fw-bold fs-3 m-0">Pagherai: {{ this.store.totalPrice }}&euro;</p>
                 <div id="dropin-container"></div>
                 <form id="payment-form" action="" method="post">
 
-                <div class="d-flex justify-content-center">
-                    <button id="submit-button" :class="{'disabled': loadingBrain}" class="btn btn-primary">Acquista</button>
-                </div>
+                    <div class="d-flex justify-content-center">
+                        <button id="submit-button" :class="{ 'disabled': loadingBrain }"
+                            class="btn btn-primary">{{ paymentAdded ? 'Paga' : 'Aggiungi carta' }}</button>
+                    </div>
                 </form>
             </div>
 
+        </div>
+    </div>
+
+    <div v-if="loadingPayment" class="loading">
+        <div class='uil-ring-css' style='transform:scale(0.79);'>
+            <div>
+            </div>
         </div>
     </div>
 </template>
@@ -42,7 +50,9 @@ export default {
             token: null,
             loadingBrain: true,
             user: {},
-            store
+            store,
+            loadingPayment: false,
+            paymentAdded: null,
         }
     },
     methods: {
@@ -79,7 +89,6 @@ export default {
                             //   a server-side integration
                             this.nonce = payload.nonce;
                             this.paymentAdded = true;
-                            this.addedCard = true;
 
                         }
 
@@ -95,18 +104,25 @@ export default {
                 })
         },
         pay() {
+            this.loadingPayment = true
+
             const paymentInfo = {
                 name: this.user.name,
                 last_name: this.user.surname,
                 address: this.user.address,
                 phone: this.user.phone,
-              //  total_price: this.totalPrice,
-                products: this.store.cart.products
+                total_price: this.store.totalPrice,
+                products: this.store.cart
             }
             axios.post('http://localhost:8000/api/payment/process', paymentInfo).
-            then((res) => {
-                console.log('riuscito')
-            })
+                then((res) => {
+                    this.loadingPayment = false
+                    this.paymentAdded = false
+                    console.log('riuscito')
+                    this.store.totalPrice = 0
+                    this.store.cart = []
+                    this.$router.push('/payment/success')
+                })
         }
 
     },
@@ -115,7 +131,7 @@ export default {
         console.log('we')
     },
     computed: {
-       
+
     }
 
 }
@@ -126,5 +142,173 @@ export default {
     background-color: white;
     padding: 10px;
     border-radius: 5px;
+}
+
+*.hidden {
+  display: none !important;
+}
+
+div.loading{
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(16, 16, 16, 0.5);
+}
+
+@-webkit-keyframes uil-ring-anim {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes uil-ring-anim {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes uil-ring-anim {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-ms-keyframes uil-ring-anim {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes uil-ring-anim {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes uil-ring-anim {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes uil-ring-anim {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes uil-ring-anim {
+  0% {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.uil-ring-css {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+}
+.uil-ring-css > div {
+  position: absolute;
+  display: block;
+  width: 160px;
+  height: 160px;
+  top: 20px;
+  left: 20px;
+  border-radius: 80px;
+  box-shadow: 0 6px 0 0 #ffffff;
+  -ms-animation: uil-ring-anim 1s linear infinite;
+  -moz-animation: uil-ring-anim 1s linear infinite;
+  -webkit-animation: uil-ring-anim 1s linear infinite;
+  -o-animation: uil-ring-anim 1s linear infinite;
+  animation: uil-ring-anim 1s linear infinite;
 }
 </style>
