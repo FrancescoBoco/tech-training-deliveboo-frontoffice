@@ -40,7 +40,7 @@ export default {
 
 <style lang="scss" scoped>
 .logo {
-    width: 100px;
+    width: 70px;
     border-radius: 20px;
 }
 
@@ -48,7 +48,7 @@ export default {
     background-color: rgba(0, 0, 0, 0.95);
 
     .gi-container {
-        max-width: 1200px;
+        max-width: 1600px;
         margin: auto;
 
         a {

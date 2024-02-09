@@ -55,9 +55,9 @@ export default {
         <div class="container pt-3">
             <div class="glass-form mb-3 row">
                 <section class="d-flex justify-content-center">
-                    <h1 class="mb-3 main-gradient">Ristoranti</h1>
+                    <h1 class="mb-3 display-5 main-gradient fw-bold">Ristoranti</h1>
                 </section>
-                <h3 class="text-center main-gradient">Filtro per categorie</h3>
+                <h3 class="text-center display-6 pb-3 main-gradient ">Filtro per categorie</h3>
                 <div class="m-3 row d-flex align-items-center justify-content-center">
                     <div v-for="typology in typologies" :key="typology.name"
                         class="custom-checkbox-group m-1 col-4 col-sm-3 col-lg-2 m-lg-0 mb-lg-2 text-center" role="group"
@@ -89,8 +89,8 @@ export default {
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center p-3" v-else>
-                <h5>Nessun ristorante trovato</h5>
+            <div class="d-flex justify-content-center p-3 " v-else>
+                <h5 class="display-5 main-gradient fw-bold glass-form">Nessun ristorante trovato</h5>
             </div>
         </div>
 
