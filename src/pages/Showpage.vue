@@ -21,10 +21,11 @@ export default {
                     this.restaurant = response.data;
                     this.selectedRestaurantImage = response.data.photo;
                     this.restaurant.dish.map((dish) => {
-                    dish.qty = 1})
+                        dish.qty = 1
+                    })
                 })
-                
-                
+
+
         },
         addToCart(dish) {
             let alreadyAdded = false
@@ -39,7 +40,7 @@ export default {
             })
 
             if (!alreadyAdded) {
-            store.cart.push({...dish})
+                store.cart.push({ ...dish })
             }
 
         }
@@ -61,7 +62,7 @@ export default {
 
         <section class="d-flex justify-content-center">
 
-            <h1 class="mt-5 mb-3 main main-gradient">{{ restaurant.name }}</h1>
+            <h1 class="mt-5 mb-3 main main-gradient glass-form">{{ restaurant.name }}</h1>
         </section>
         <div class="container">
             <div class="row">
@@ -77,9 +78,11 @@ export default {
                             </p>
                             <div class="input-group input-group-sm mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-sm">Quantità:</span>
-                                <input  v-model="dish.qty" type="number" class="form-control" aria-label="Sizing example input"
-                                    aria-describedby="inputGroup-sizing-sm">
-                                <button @click="addToCart(dish)" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" class="btn btn-primary"><i class="fa-solid fa-cart-plus"></i></button>
+                                <input v-model="dish.qty" type="number" class="form-control"
+                                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                <button @click="addToCart(dish)" type="button" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasRight" class="btn btn-primary"><i
+                                        class="fa-solid fa-cart-plus"></i></button>
 
                             </div>
 

@@ -17,9 +17,9 @@ export default {
 
 <template >
     <div class="navbar-style fixed-top">
-        <div class="container">
+        <div class="gi-container">
             <nav class="p-2 d-flex align-items-center justify-content-between shadow">
-                
+
                 <router-link :to="{ name: 'home' }"> <img class="logo" src="/images/deliveboo.jpg" alt="deliveboo logo">
 
                 </router-link>
@@ -29,7 +29,8 @@ export default {
                 <a href="http://localhost:8000">
                     <h6><span class="main-gradient">Ristoratore</span></h6>
                 </a>
-                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></button>
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></button>
 
             </nav>
         </div>
@@ -46,11 +47,16 @@ export default {
 .navbar-style {
     background-color: rgba(0, 0, 0, 0.95);
 
-    a {
-        text-decoration: none;
+    .gi-container {
+        max-width: 1200px;
+        margin: auto;
 
-        span {
-            font-size: 30px;
+        a {
+            text-decoration: none;
+
+            span {
+                font-size: 30px;
+            }
         }
     }
 }

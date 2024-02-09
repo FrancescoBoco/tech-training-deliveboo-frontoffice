@@ -53,13 +53,14 @@ export default {
 
 
         <div class="container pt-3">
-            <div class="glass-form-dark mb-3 row">
+            <div class="glass-form mb-3 row">
                 <section class="d-flex justify-content-center">
                     <h1 class="mb-3 main-gradient">Ristoranti</h1>
                 </section>
                 <h3 class="text-center main-gradient">Filtro per categorie</h3>
-                <div class="d-flex justify-content-center m-3">
-                    <div v-for="typology in typologies" :key="typology.name" class="custom-checkbox-group me-1" role="group"
+                <div class="m-3 row d-flex align-items-center justify-content-center">
+                    <div v-for="typology in typologies" :key="typology.name"
+                        class="custom-checkbox-group m-1 col-4 col-sm-3 col-lg-2 m-lg-0 mb-lg-2 text-center" role="group"
                         aria-label="Basic checkbox toggle button group">
                         <input @click="search(typology.name)" type="checkbox" class="btn-check" :id="typology.name"
                             autocomplete="off">
@@ -68,7 +69,7 @@ export default {
                     </div>
                 </div>
             </div>
-            <div class="glass-form-dark row mb-3" v-if="restaurants.length > 0">
+            <div class="glass-form row mb-3" v-if="restaurants.length > 0">
                 <div class="col-4 d-flex justify-content-center" v-for="restaurant in restaurants">
                     <div class="card mb-3" style="width: 18rem;">
                         <img class="card-img-top" :src="restaurant.photo" :alt="restaurant.name">
@@ -126,7 +127,7 @@ export default {
     color: #ec8232;
     background-color: transparent;
     border: 1px solid;
-
+    min-width: 105px;
     border-radius: 15px;
     margin: 0 5px;
     cursor: pointer;
