@@ -3,6 +3,9 @@
 // Import all of Bootstrap's CSS
 @import "bootstrap/scss/bootstrap";
 
+[data-braintree-id="toggle"] {
+    display: none;
+}
 
 
 main {

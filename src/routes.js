@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Homepage from "./pages/Homepage.vue";
 import Searchpage from "./pages/Searchpage.vue";
 import Showpage from "./pages/Showpage.vue";
+import Payment from "./pages/Payment.vue";
 
 const routes = [
     // homepage
@@ -22,6 +23,12 @@ const routes = [
         name: 'show',
         component: Showpage,
     },
+
+    {
+        path:'/payment',
+        name:'payment',
+        component:Payment
+    }
 
 ];
 
