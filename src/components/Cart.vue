@@ -23,8 +23,8 @@
         <div class="extra-info mt-3">
                 <p class="fw-bold">Prezzo totale: {{ totalPrice }}&euro;</p>
             </div>
-            <router-link class="btn btn-info"
-                                    :to="{ name: 'payment'}">Acquista</router-link>
+            <a @click="this.$router.push('/payment')" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"  class="btn btn-info"
+                                    >Acquista</a>
     </div>
   </div>
 </div>
@@ -42,9 +42,10 @@ import { store } from "../store";
         computed: {
             totalPrice() {
                 const initialPrice = 0;
-            const totalPrice = store.cart.products.reduce((accumulator, dish) => {
+            const totalPrice = store.cart.reduce((accumulator, dish) => {
                   return accumulator+dish.price*dish.qty
                 }, initialPrice)
+                store.totalPrice = totalPrice.toFixed(2)
                 return totalPrice.toFixed(2)
             }
         }

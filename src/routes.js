@@ -3,6 +3,8 @@ import Homepage from "./pages/Homepage.vue";
 import Searchpage from "./pages/Searchpage.vue";
 import Showpage from "./pages/Showpage.vue";
 import Payment from "./pages/Payment.vue";
+import PaymentSuccess from "./pages/PaymentSuccess.vue";
+
 
 const routes = [
     // homepage
@@ -28,6 +30,11 @@ const routes = [
         path:'/payment',
         name:'payment',
         component:Payment
+    },
+    {
+        path:'/payment/success',
+        name: 'success',
+        component:PaymentSuccess
     }
 
 ];
