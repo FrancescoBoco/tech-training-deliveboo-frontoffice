@@ -29,7 +29,7 @@ export default {
                 <a href="http://localhost:8000">
                     <h6><span class="main-gradient">Ristoratore</span></h6>
                 </a>
-                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                <button class="btn me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
                     aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping"></i></button>
 
             </nav>
@@ -58,6 +58,12 @@ export default {
                 font-size: 30px;
             }
         }
+    }
+
+    .btn {
+        background-color: #D95D30;
+        border-color: #D94141;
+        color: white;
     }
 }
 </style>
