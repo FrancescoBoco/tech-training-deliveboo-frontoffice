@@ -89,23 +89,6 @@ export default {
                             </div>
                         </div>
                     </div>
-
-                    <!-- <div class="card mb-3" style="width: 18rem;">
-                        <img class="card-img-top" :src="restaurant.photo" :alt="restaurant.name">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ restaurant.name }}</h5>
-                            <p class="card-text">Indirizzo: {{ restaurant.address }}</p>
-                            <p class="card-text">Tipologie:
-                                <span class="badge text-bg-primary me-1" v-for="typology in restaurant.typologies">{{
-                                    typology.name }}</span>
-                            </p>
-                            <div class="d-flex justify-content-center">
-                                <router-link class="btn btn-outline-danger"
-                                    :to="{ name: 'show', params: { id: restaurant.id } }">Mostra
-                                    menu</router-link>
-                            </div>
-                        </div>
-                    </div> -->
                 </router-link>
             </div>
             <div class="d-flex justify-content-center p-3 " v-else>
@@ -184,7 +167,6 @@ export default {
         opacity: 1;
         transition: all .5s;
         transition-delay: .25s;
-
         color: #ec8232;
         overflow: hidden;
     }
