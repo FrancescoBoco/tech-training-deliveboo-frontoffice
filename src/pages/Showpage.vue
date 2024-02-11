@@ -70,7 +70,7 @@ export default {
         </section>
         <div class="container">
             <div class="row glass-form">
-                <div class="col-4 d-flex flex-column align-items-center justify-content-center mb-4 p-2 position-relative"
+                <div class="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center justify-content-center mb-4 p-2 position-relative overflow-hidden"
                     v-for="dish in restaurant.dish" @click="toggleOverlayBody(dish)">
 
                     <div class="overlay-content">
