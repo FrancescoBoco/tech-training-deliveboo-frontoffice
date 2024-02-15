@@ -126,12 +126,7 @@ export default {
 .col-4 {
     cursor: pointer;
     overflow: hidden;
-
-    &:hover:not(.rounded) .overlay-img {
-        transform: scale(0.75);
-    }
 }
-
 
 .overlay-img {
     width: 250px;
@@ -140,6 +135,10 @@ export default {
     border-radius: 50%;
     transform: scale(0.5);
     transition: all 0.5s;
+
+    &:hover {
+        transform: scale(0.75);
+    }
 
     img {
         width: 100%;
